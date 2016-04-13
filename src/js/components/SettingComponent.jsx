@@ -10,9 +10,9 @@ export default class SettingComponent extends Component {
 	};
 
 	btnSaveClick(){
-		let workTime = parseInt(this.refs.workTime.value.trim(), 10);
-		let breakTime = parseInt(this.refs.breakTime.value.trim(), 10);
-		let longBreakTime = parseInt(this.refs.longBreakTime.value.trim(), 10);
+		let workTime = parseInt(this.refs.workTime.value.trim(), 10) * 60;
+		let breakTime = parseInt(this.refs.breakTime.value.trim(), 10) * 60;
+		let longBreakTime = parseInt(this.refs.longBreakTime.value.trim(), 10) * 60;
 		if(isNaN(workTime) || isNaN(breakTime) || isNaN(longBreakTime)){
 			return;
 		}
@@ -24,6 +24,9 @@ export default class SettingComponent extends Component {
 
 	render() {
 		let {workTime, breakTime, longBreakTime} = this.props;
+		workTime = workTime/60 | 0;
+		breakTime = breakTime/60 | 0;
+		longBreakTime = longBreakTime/60 | 0;
 
 		return (
 			<div className="setting_component">

@@ -48,7 +48,7 @@ export default class TimerComponent extends Component {
 	}
 
 	getSquare(count){
-		let text = "■";
+		let text = "";
 		for(let i = 0; i < count; i++){
 			text += "■";
 		}

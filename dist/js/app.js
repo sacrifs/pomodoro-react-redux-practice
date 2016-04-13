@@ -21750,7 +21750,7 @@
 		}, {
 			key: "getSquare",
 			value: function getSquare(count) {
-				var text = "■";
+				var text = "";
 				for (var i = 0; i < count; i++) {
 					text += "■";
 				}
@@ -21838,7 +21838,7 @@
 	var STATUS_BREAKING = exports.STATUS_BREAKING = -1;
 	var STATUS_STOP = exports.STATUS_STOP = 0;
 	
-	var DEFAULT_TIME = exports.DEFAULT_TIME = { workTime: 25, breakTime: 5, longBreakTime: 15 };
+	var DEFAULT_TIME = exports.DEFAULT_TIME = { workTime: 25 * 60, breakTime: 5 * 60, longBreakTime: 15 * 60 };
 
 /***/ },
 /* 190 */
@@ -21880,9 +21880,9 @@
 		_createClass(SettingComponent, [{
 			key: "btnSaveClick",
 			value: function btnSaveClick() {
-				var workTime = parseInt(this.refs.workTime.value.trim(), 10);
-				var breakTime = parseInt(this.refs.breakTime.value.trim(), 10);
-				var longBreakTime = parseInt(this.refs.longBreakTime.value.trim(), 10);
+				var workTime = parseInt(this.refs.workTime.value.trim(), 10) * 60;
+				var breakTime = parseInt(this.refs.breakTime.value.trim(), 10) * 60;
+				var longBreakTime = parseInt(this.refs.longBreakTime.value.trim(), 10) * 60;
 				if (isNaN(workTime) || isNaN(breakTime) || isNaN(longBreakTime)) {
 					return;
 				}
@@ -21901,6 +21901,9 @@
 				var breakTime = _props.breakTime;
 				var longBreakTime = _props.longBreakTime;
 	
+				workTime = workTime / 60 | 0;
+				breakTime = breakTime / 60 | 0;
+				longBreakTime = longBreakTime / 60 | 0;
 	
 				return _react2.default.createElement(
 					"div",
